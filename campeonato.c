@@ -1,7 +1,7 @@
 /*
  * Gerenciador de Campeonato de Futebol
  * Disciplina: Algoritmos e Pensamento Computacional
- * VERSÃO INICIAL comentada para auxílio na implementação */
+ * VERSÃO INICIAL comentarios para ajudar na implementação */
 
 #include <stdio.h>
 #include <string.h>
@@ -12,10 +12,10 @@
 #endif
 
 /* ---------- 1. CONSTANTES ---------- */
-#define MAX_TIMES    10   /* RN01: máximo de 10 times */
-#define MIN_TIMES    4    /* RN01: mínimo de 4 times (usado nas próximas etapas) */
-#define MAX_PARTIDAS 45   /* 10 times em turno único: 10*9/2 = 45 jogos */
-#define TAM_NOME     50   /* até 49 caracteres + '\0' */
+#define MAX_TIMES    10   
+#define MIN_TIMES    4    
+#define MAX_PARTIDAS 45   
+#define TAM_NOME     50   
 
 /* ---------- 2. STRUCTS ---------- */
 typedef struct {
@@ -45,25 +45,10 @@ int     qtdPartidas = 0;   /* será usado ao implementar o registro de partidas 
 
 /* ---------- 4. FUNÇÕES AUXILIARES DE ENTRADA ---------- */
 
-/* Lê uma linha de texto com segurança, removendo o '\n' e espaços nas pontas */
+/* Lê uma linha de texto e remove o '\n' do final */
 void lerTexto(char *destino, int tamanho) {
     fgets(destino, tamanho, stdin);
     destino[strcspn(destino, "\n")] = '\0';
-
-    /* remove espaços do final */
-    int fim = (int)strlen(destino) - 1;
-    while (fim >= 0 && isspace((unsigned char)destino[fim])) {
-        destino[fim] = '\0';
-        fim--;
-    }
-    /* remove espaços do início */
-    int ini = 0;
-    while (destino[ini] != '\0' && isspace((unsigned char)destino[ini])) {
-        ini++;
-    }
-    if (ini > 0) {
-        memmove(destino, destino + ini, strlen(destino + ini) + 1);
-    }
 }
 
 /* Lê um número inteiro; se o usuário digitar letras, retorna -1 */
@@ -101,7 +86,7 @@ int buscarTimePorNome(const char *nome) {
     return -1;
 }
 
-/* RF01 + RN01 + RN02 */
+
 void cadastrarTime(void) {
     char nome[TAM_NOME];
 
